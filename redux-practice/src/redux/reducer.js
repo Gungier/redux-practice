@@ -1,4 +1,4 @@
-  /*
+/*   /*
   {
     created a reducer function below that takes the initState and action as inputs.
     the actions have a 'type' and 'payload' which can have any details 
@@ -15,19 +15,11 @@
       logout
   } from "./actions";
 
-  let initialState = {
-      counter: 0,
-      message: "",
-  }
-
-  const user = {
-      isLoggedIn: false,
-      message: "User is not Logged In"
-  };
+  
 
 
   //these functions take two inputs; state & function, then returns the updated state.  Furthermore, don't have to write code for the default case.
-  export const counterReducer = createReducer(initialState, {
+  /*export const counterReducer = createReducer(initialState, {
       [increment]: (state, action) => {
           return {
               counter: state.counter + 1,
@@ -41,6 +33,8 @@
           };
       },
   })
+*/
+//moved the above logic to slices.js file... adding slices makes so I don't need to write actions seperately.
 
   //the below switch statements get even more simplified with the "createReducer" function and don't need to include the default now as it's included with the function as well.
 
@@ -78,7 +72,7 @@
   };
 */
 
-  export const loginReducer = createReducer(user, {
+ /* export const loginReducer = createReducer(user, {
       [login]: (state, action) => {
           return {
               isLoggedIn: true,
@@ -131,4 +125,4 @@
   //   export const reducer = combineReducers({
   //       counterReducer,
   //       loginReducer
-  //   })
+  //   }) */
