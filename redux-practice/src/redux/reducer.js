@@ -5,46 +5,84 @@
   }
   */
 
-import { combineReducers } from "redux";
+  import {
+      combineReducers
+  } from "redux";
 
-let initialState = {
-    counter:0,
-    message: "",
+  let initialState = {
+      counter: 0,
+      message: "",
   }
 
-const user = {
-    isLoggedIn: false,
-    message:"User is not Logged In"
-}
-
-   function counterReducer(state = initialState, action){
-  
-    if (action.type === "increment"){
-      return { counter: state.counter + 1, message:action.payload };
-    }
-    else if(action.type === "decrement"){
-      return{ counter: state.counter -1,message:action.payload }
-    }
-    else {
-      return state; 
-    }
+  const user = {
+      isLoggedIn: false,
+      message: "User is not Logged In"
   }
 
-  function loginReducer(state=user, action){
+  function counterReducer(state = initialState, action) {
 
-    if (action.type==="login"){
-        return {
-            isLoggedIn:true,
-            message:"User is Logged In"
-        }
-    }else if(action.type==="logout"){
-            return {
-                isLoggedIn:false,
-                message:"User is not Logged In"
-            }
-    }else {
-        return state;
-    }
+      switch (action.type) {
+          case "increment":
+
+              return {
+                  counter: state.counter + 1, message: action.payload
+              };
+
+          case "decrement":
+
+              return {
+                  counter: state.counter - 1, message: action.payload
+              }
+
+
+              default:
+                  return state;
+      }
+
+
+
+      // if (action.type === "increment"){
+      //   return { counter: state.counter + 1, message:action.payload };
+      // }
+      // else if(action.type === "decrement"){
+      //   return{ counter: state.counter -1,message:action.payload }
+      // }
+      // else {
+      //   return state; 
+      // }
+  }
+
+  function loginReducer(state = user, action) {
+
+      switch (action.type) {
+          case "login":
+              return {
+                  isLoggedIn: true,
+                      message: "User is Logged In"
+              }
+              case "logout":
+                  return {
+                      isLoggedIn: false,
+                          message: "User is not Logged In"
+                  }
+                  default:
+                      return state;
+      }
+
+
+    //   if (action.type === "login") {
+    //       return {
+    //           isLoggedIn: true,
+    //           message: "User is Logged In"
+    //       }
+    //   } else if (action.type === "logout") {
+    //       return {
+    //           isLoggedIn: false,
+    //           message: "User is not Logged In"
+    //       }
+    //   } else {
+    //       return state;
+    //   }
   }
 
   export const reducer = combineReducers({
